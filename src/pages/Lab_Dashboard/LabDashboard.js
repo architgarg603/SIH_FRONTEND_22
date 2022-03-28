@@ -2,6 +2,14 @@ import React, { useEffect, useState } from 'react'
 import LabTable from '../../Components/LabTable/LabTable'
 import style from './LabDashboard.module.scss'
 import AddEquipmentModal from '../../Components/AddEquipmentModal/AddEquipmentModal';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
+import ImageIcon from '@mui/icons-material/Image';
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleIcon from '@mui/icons-material/People';
 import { labIds } from '../../Services/LabServices';
 import { useParams } from 'react-router-dom';
 import EmptyListMsg from '../../Components/EmtyListMsg/EmptyListMsg';
@@ -45,10 +53,42 @@ function LabDashboard() {
         <div className={style.btn} onClick={handleOpen} >Add Equipment</div>
       </div>
       <div className={style.details}>
-        <div className={style.subHead}><div>Name</div> <div>{labDetail.lab_name}</div> </div>
-        <div className={style.subHead}><div>Admin Name</div> <div>{labDetail.lab_admin_name}</div> </div>
-        <div className={style.subHead}><div>Lab Capacity</div> <div>{labDetail.lab_student_capacity}</div> </div>
-        <div className={style.subHead}><div>Address</div> <div>{labDetail.lab_address}</div> </div>
+      <List sx={{ width: '100%', maxWidth: 160 }}>
+            <ListItem className={style.details1} sx={{
+              display: 'flex',
+              justifyContent: "space-between",
+              width: "75vw"
+            }}>
+              <ListItemAvatar >
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
+                  <ImageIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Name" secondary={labDetail?.lab_name} />
+              <ListItemAvatar >
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
+                  <ImageIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Admin Name" secondary={labDetail?.lab_admin_name} />
+              <ListItemAvatar >
+              <Avatar sx={{ backgroundColor: "#2db6bc" }}>
+                  <PeopleIcon sx={{ backgroundColor: "grey" }} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Lab Capacity" secondary={labDetail?.lab_student_capacity} />
+              
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
+                  <HomeIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Address" secondary={labDetail?.institute_address} />
+            </ListItem>
+            <ListItem>
+           
+            </ListItem>
+          </List>
       </div>
 
       <div className={style.head} style={{ marginBottom: "15px" }}>Experminet List</div>
