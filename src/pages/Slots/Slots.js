@@ -14,8 +14,15 @@ import Select from "@mui/material/Select";
 import { labIds } from "../../Services/LabServices";
 import EmptyListMsg from "../../Components/EmtyListMsg/EmptyListMsg";
 import LabTable from "../../Components/LabTable/LabTable";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Slots() {
+  const [open, setOpen] = React.useState(false);
   const [data, setData] = useState([]);
   const { id } = useParams();
   const location = useParams();
@@ -48,7 +55,17 @@ export default function Slots() {
       ["temp3", "temp"],
     ]);
   }, []);
+  const handleClick = () => {
+    setOpen(true);
+  };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -68,7 +85,7 @@ export default function Slots() {
   return (
     <>
       <div className="bg-gray-200 min-h-screen flex px-10">
-        <div className=" bg-white h-max rounded-xl flex flex-col mt-24 p-6 mx-5 w-full">
+        <div className=" bg-white h-max rounded-xl flex flex-col mt-20 p-6 mx-5 w-full">
           <div className="flex justify-between">
             <p className="pl-10 text-3xl md:text-5xl font-bold  mt-7 md:mt-0 ">
               {data.lab_name?.charAt(0).toUpperCase() + data.lab_name?.slice(1)}
@@ -146,9 +163,27 @@ export default function Slots() {
                   </FormControl>
                 </Box>
               </div>
-              <button className="bg-[#407BFF] text-white font-bold uppercase text-sm px-6 py-3 my-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-max">
+              <button
+                className="bg-[#407BFF] text-white font-bold uppercase text-sm px-6 py-3 my-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-max"
+                onClick={handleClick}
+              >
                 BOOK SLOT
               </button>
+              <div className="bg-green-500">
+                <Snackbar
+                  open={open}
+                  autoHideDuration={6000}
+                  onClose={handleClose}
+                >
+                  <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    sx={{ width: "100%" }}
+                  >
+                    Congratulations your slot has been booked!
+                  </Alert>
+                </Snackbar>
+              </div>
             </div>
           </div>
         </div>

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { Card, CardContent, CardHeader } from "@material-ui/core";
 import styles from "./Lab_row.module.scss";
 function Lab_row({ data, idx, onRemoveHandler, slots }) {
-  const [color, setColor] = useState(styles.btn)
+  const [color, setColor] = useState(styles.btn);
+  const [select, setSelected] = useState("Select");
 
   function changeColor() {
-    setColor(styles.btn_green)
+    setColor(styles.btn_green);
+    setSelected("Selected");
   }
   return (
     <div>
@@ -22,11 +24,8 @@ function Lab_row({ data, idx, onRemoveHandler, slots }) {
         />
         {slots ? (
           <>
-            <CardContent
-              className={color}
-              onClick = {changeColor}
-            >
-              Select
+            <CardContent className={color} onClick={changeColor}>
+              {select}
             </CardContent>
           </>
         ) : (

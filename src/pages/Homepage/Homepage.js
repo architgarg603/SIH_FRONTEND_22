@@ -15,7 +15,7 @@ export default function Homepage() {
           </p>
           <div className="flex justify-center md:justify-start">
             <Link to="/labs">
-              <button className="justify-start h-14 mx-16 px-6 md:w-max mt-3 font-semibold rounded-md bg-[#407BFF] text-white w-max shadow-[#407BFF] shadow-md">
+              <button className="justify-start h-14 mx-16 px-6 md:w-max mt-3 font-semibold rounded-md bg-[#407BFF] text-white w-max shadow-[#3d3dc3] shadow-md">
                 BOOK YOUR LABS
               </button>
             </Link>
