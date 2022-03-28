@@ -2,18 +2,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { createLab } from '../../Services/LabServices';
+import style from "./RegisterLabModal.module.scss"
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
 
 export default function RegisterLabModal({ handleClose, open, setInstituteDetails, instituteDetails }) {
     const inst_id = localStorage.getItem("inst_id")
@@ -40,12 +30,19 @@ export default function RegisterLabModal({ handleClose, open, setInstituteDetail
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box className={style.wrapper}>
+                    <h1 className={style.head}>Create Lab</h1>
+                    <div className={style.row1}>
+
                     <input type='text' placeholder='Enter name' onChange={(e) => setDetails({ ...details, lab_name: e.target.value })} />
                     <input type='text' placeholder='Enter address' onChange={(e) => setDetails({ ...details, lab_address: e.target.value })} />
+                    </div>
+                    <div className={style.row2}>
                     <input type='text' placeholder='Enter admin name' onChange={(e) => setDetails({ ...details, lab_admin_name: e.target.value })} />
                     <input type='number' defaultValue={'50'} onChange={(e) => setDetails({ ...details, lab_student_capacity: e.target.value })} />
-                    <div onClick={onSubmitHandler}>Submit</div>
+
+                    </div>
+                    <div className={style.btn} onClick={onSubmitHandler}>Submit</div>
                 </Box>
             </Modal>
         </div>
