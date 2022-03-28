@@ -34,29 +34,32 @@ function StudentDashboard() {
       <div className={style.student}>
         <div>
           <List sx={{ width: "100%", maxWidth: 360 }}>
-            <ListItem>
+            <ListItem
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "60vw",
+              }}
+            >
               <ListItemAvatar>
-                <Avatar>
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
                   <ImageIcon />
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary="Name" secondary="John Doe" />
-            </ListItem>
-            <ListItem>
+
               <ListItemAvatar>
-                <Avatar>
-                  <HomeIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="Address" secondary="xyx" />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
                   <LocalPhoneIcon />
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary="Phone" secondary="0000000000" />
+              <ListItemAvatar>
+                <Avatar sx={{ backgroundColor: "#2db6bc" }}>
+                  <HomeIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Address" secondary="xyx" />
             </ListItem>
           </List>
         </div>

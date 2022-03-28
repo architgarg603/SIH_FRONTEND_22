@@ -1,58 +1,55 @@
-.wrapper{
-    padding: 100px;
-    height: 100vh;
+.wrapper {
+  padding: 100px;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+
+  .head {
+    font-size: xx-large;
+    font-weight: bold;
+  }
+  .details {
     width: 100%;
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-    .head{
-        font-size: xx-large;
-        font-weight: bold;
+  .subHead {
+    font-size: large;
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 15px;
+    width: 50%;
+    min-width: 400px;
+    div {
+      margin-right: 20px;
+
+      &:first-child {
+        min-width: 150px;
+        width: 150px;
+        max-width: 150px;
+      }
+      &:last-child {
+        font-weight: 500;
+      }
     }
-    .details{
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
+  }
+
+  .btns {
+    display: flex;
+    justify-content: flex-end;
+
+    .btn {
+      margin-right: 25px;
+      font-size: large;
+      cursor: pointer;
+      width: 150px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+      background-color: rgba(128, 128, 128, 0.397);
     }
-    
-    .subHead{
-        font-size: large;
-        font-weight: bold;
-        display: flex;
-        margin-bottom: 15px;
-        width: 50%;
-        min-width: 400px;
-        div{
-            margin-right: 20px;
-
-            &:first-child{
-                min-width: 150px;
-                width: 150px;
-                max-width: 150px;
-            }
-            &:last-child{
-                font-weight: 500;
-            }
-        }
-    }
-
-
-    .btns{
-        display: flex;
-        justify-content: flex-end;
-        margin-bottom: 50px;
-
-        .btn{
-            margin-right: 25px;
-            font-size: large;
-            cursor: pointer;
-            width: 150px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 15px;
-            background-color: rgba(128, 128, 128, 0.397);
-        }
-    }
+  }
 }
