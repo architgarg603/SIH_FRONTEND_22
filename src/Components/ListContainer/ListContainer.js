@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Slots from "../../pages/Slots/Slots";
 import { labsEquipments, labsExperiments } from "../../Services/LabServices";
 import GradeIcon from "@mui/icons-material/Grade";
+import FmdGoodIcon from "@mui/icons-material/FmdGood";
 
 export default function ListContainer({ list }) {
   const [showModal, setShowModal] = useState(false);
@@ -40,17 +41,24 @@ export default function ListContainer({ list }) {
                 <div className="flex flex-col p-5 justify-evenly leading-normal w-full">
                   <div className="flex justify-between">
                     <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-black">
-                      {list.lab_name}
+                      {list.lab_name.charAt(0).toUpperCase() +
+                        list.lab_name.slice(1)}
                     </h5>
                     <div>
                       <GradeIcon />
                       <GradeIcon />
                       <GradeIcon />
+                      <GradeIcon />
+                      <GradeIcon />
                     </div>
                   </div>
-                  <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-black">
-                    {list.lab_address}
-                  </h5>
+                  <div className="flex space-x-1">
+                    <FmdGoodIcon />
+
+                    <h5 className="mb-2 text-xl font-normal tracking-tight text-gray-900 dark:text-black">
+                      {list.lab_address}
+                    </h5>
+                  </div>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sunt tenetur dicta odit nostrum, perspiciatis cupiditate
@@ -58,25 +66,18 @@ export default function ListContainer({ list }) {
                     voluptates. Sint nam eius minima, illum tempore laboriosam
                     obcaecati?
                   </p>
-                  <div className="flex justify-end">
+                  <div className="flex justify-end space-x-1">
                     <Link to={`/slots/${list.lab_id}`}>
                       <button
-                        className="bg-black text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                        className="bg-[#407BFF] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                         type="button"
                         onClick={() => <Slots id={list.lab_id} />}
                       >
                         Book Slot
                       </button>
                     </Link>
-                    {/* <button
-                    className="py-3 w-1/3 font-bold rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300   text-sm dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-white   ease-linear transition-all duration-150 uppercase"
-                    type="button"
-                    onClick={() => setShowModal(true)}
-                  >
-                    Details
-                  </button> */}
                     <button
-                      className="bg-blue-500 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="border-[#407BFF] border text-[#407BFF] font-bold uppercase text-sm px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => setShowModal(true)}
                     >
@@ -95,7 +96,9 @@ export default function ListContainer({ list }) {
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                       <div className="flex  items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                         <h3 className="text-3xl font-bold">
-                          {list.lab_name} <br />
+                          {list.lab_name.charAt(0).toUpperCase() +
+                            list.lab_name.slice(1)}{" "}
+                          <br />
                           <a
                             href=""
                             className="text-xl font-semibold text-blue-700"
@@ -166,7 +169,7 @@ export default function ListContainer({ list }) {
                         </button>
                         <Link to={`/slots/${list.lab_id}`}>
                           <button
-                            className="bg-black text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            className="bg-[#407BFF] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button"
                             onClick={() => <Slots id={list.lab_id} />}
                           >
