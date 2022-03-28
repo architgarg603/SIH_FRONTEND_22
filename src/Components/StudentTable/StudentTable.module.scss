@@ -1,0 +1,47 @@
+.wrapper {
+    width: 75vw;
+    height: 50vh;
+    overflow: auto;
+    border: 1px solid gray;
+    // border-radius: 15px;
+
+    .heads {
+        display: flex;
+        justify-content: space-around;
+        width: 75vw;
+        height: 50px;
+        .head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            font-size: large;
+            font-weight: bold;
+            border-bottom: 1px solid gray;
+            width: 75vw;
+        }
+    }
+    .content {
+        height: calc(100% - 50px);
+        overflow: auto;
+        width: 75vw;
+
+        .row {
+            display: flex;
+            justify-content: space-around;
+            width: 74vw;
+            height: 50px;
+            .name,
+            .loc,.contact , .slot,
+            .btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+                font-size: large;
+                
+            }
+            
+        }
+    }
+}

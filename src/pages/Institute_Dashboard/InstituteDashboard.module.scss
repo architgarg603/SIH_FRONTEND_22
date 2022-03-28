@@ -1,0 +1,37 @@
+.wrapper{
+    padding: 40px;
+    padding-top: 100px;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+
+    .head{
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    .Institute{
+        
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+       
+    }
+
+    .btns{
+        display: flex;
+        justify-content: flex-end;
+
+        .btn{
+            margin-bottom: 25px;
+            font-size: large;
+            cursor: pointer;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background-color: #2db6bc;
+        }
+    }
+}

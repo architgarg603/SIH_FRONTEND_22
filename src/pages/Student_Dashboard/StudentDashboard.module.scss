@@ -1,0 +1,36 @@
+.wrapper{
+    padding: 100px;
+    width: 100%;
+    min-height: 100vh;
+
+    .head{
+        font-size: xx-large;
+        font-weight: bold;
+    }
+    .student{
+        
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    }
+
+    .btns{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 50px;
+
+        .btn{
+            margin-right: 25px;
+            font-size: large;
+            cursor: pointer;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background-color: rgba(128, 128, 128, 0.397);
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.wrapper{
+    padding: 100px;
+    height: 100vh;
+    width: 100%;
+    overflow: auto;
+
+    .head{
+        font-size: xx-large;
+        font-weight: bold;
+    }
+
+    .btns{
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 50px;
+
+        .btn{
+            margin-right: 25px;
+            font-size: large;
+            cursor: pointer;
+            width: 150px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background-color: rgba(128, 128, 128, 0.397);
+        }
+    }
+}
