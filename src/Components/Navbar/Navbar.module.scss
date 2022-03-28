@@ -1,0 +1,18 @@
+.btns{
+    width: 20vw;
+    display: flex;
+    justify-content: space-around;
+    .btn1{
+       
+        width: 8vw;
+       
+        background-color: #407bff;
+        color: white !important;
+        
+        cursor: pointer;
+    }
+    .btn{
+        width: 8vw;
+        border: 2px solid #407bff !important ;
+    }
+}
