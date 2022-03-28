@@ -15,7 +15,7 @@ import InstituteDashboard from "./pages/Institute_Dashboard/InstituteDashboard";
 import Maps from "./pages/map";
 function App() {
   return (
-    <div className="App">
+    <div className="App font-Inter">
       <Navbar />
       <BrowserRouter>
         <Routes>

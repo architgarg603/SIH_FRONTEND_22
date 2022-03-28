@@ -11,17 +11,61 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { labIds, labsExperiments } from "../../Services/LabServices";
+import { labIds } from "../../Services/LabServices";
+import EmptyListMsg from "../../Components/EmtyListMsg/EmptyListMsg";
+import LabTable from "../../Components/LabTable/LabTable";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 export default function Slots() {
+  const [open, setOpen] = React.useState(false);
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const location = useParams();
+  const labId = location.id;
+  const [labDetails, setLabDetails] = useState([]);
+  const [labDetail, setLabDetail] = useState([]);
   // const navigate = useNavigate();
   const [value, setValue] = React.useState();
   const [slot, setSlot] = React.useState("");
-  const [experiments, setExperiments] = useState();
+  // const [experiments, setExperiments] = useState();
   // const [equipments, setEquipments] = useState();
+  const getLabDetails = async () => {
+    let labDetails = await labIds({ id: labId });
+    console.log(labDetail, labDetails);
+    setLabDetail(labDetails);
+  };
+  useEffect(() => {
+    getLabDetails();
+    setLabDetails([
+      ["temp", "temp"],
+      ["temp1", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp2", "temp"],
+      ["temp3", "temp"],
+    ]);
+  }, []);
+  const handleClick = () => {
+    setOpen(true);
+  };
 
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   const handleChange = (newValue) => {
     setValue(newValue);
   };
@@ -33,39 +77,59 @@ export default function Slots() {
     console.log(response);
     setData(response);
 
-    const exp = await labsExperiments({ id });
-    console.log(exp);
-    setExperiments(exp);
+    // const exp = await labsExperiments({ id });
+    // console.log(exp);
+    // setExperiments(exp);
   }, []);
 
   return (
     <>
-      <div className="min-h-screen w-screen flex">
-        <div className="flex flex-col mt-20 p-6 mx-5 space-y-5 w-full">
+      <div className="bg-gray-200 min-h-screen flex px-10">
+        <div className=" bg-white h-max rounded-xl flex flex-col mt-20 p-6 mx-5 w-full">
           <div className="flex justify-between">
-            <p className="text-3xl md:text-5xl font-bold  mt-7 md:mt-0 ">
-              {data.lab_name}
+            <p className="pl-10 text-3xl md:text-5xl font-bold  mt-7 md:mt-0 ">
+              {data.lab_name?.charAt(0).toUpperCase() + data.lab_name?.slice(1)}
             </p>
-            <p className="text-xl md:text-4xl font-normal  mt-9 md:mt-0 ">
+            {/* <p className="text-xl md:text-4xl font-normal  mt-9 md:mt-0 ">
               {data.lab_address}
-            </p>
+            </p> */}
           </div>
           <a
             href=""
-            className="text-xl md:text-xl w-max font-semibold text-blue-700"
+            className="text-xl pl-10 md:text-xl w-max font-semibold text-blue-700 mt-2"
           >
             {data.lab_admin_name}
           </a>
           <div className="flex justify-between">
-            <div className="mt-5">
-              <p className="text-3xl font-bold">Experiments</p>
-              <p>Aim: {experiments?.aim}</p>
-              <p>Description: {experiments?.description}</p>
-              <p>Equipments: {data?.equipments || experiments?.aim}</p>
+            <div className="mt-5 pl-10">
+              <p className="text-4xl font-bold mb-3">About</p>
+              <p className="w-2/3">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum
+                repellat accusantium commodi magnam nam adipisci, nihil eaque
+                exercitationem! Earum iure error ullam cum velit ex blanditiis
+                iste labore atque? Ut.
+              </p>
+              <div className="pt-10">
+                <p className="text-2xl font-bold mb-3">Select Experiments</p>
+                <div className="w-3/4">
+                  {labDetails.length == 0 ? (
+                    <EmptyListMsg msg={"No lab registered"} />
+                  ) : (
+                    <LabTable
+                      slots={true}
+                      labDetails={labDetails}
+                      setLabDetails={setLabDetails}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="w-max bg-white p-10">
-              <div className="font-bold  text-3xl py-2 pb-10">Book Lab</div>
-              <div className="w-max">
+
+            <div className="w-max mr-28 flex flex-col">
+              <div className="font-bold w-96 text-5xl py-2 pb-10">
+                Book A Slot
+              </div>
+              <div className="">
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <Stack spacing={3}>
                     <MobileDatePicker
@@ -100,11 +164,26 @@ export default function Slots() {
                 </Box>
               </div>
               <button
-                type="submit"
-                className="py-1 w-max text-center text-sm md:text-lg px-3 md:py-2 md:px-5 text-white bg-blue-600 rounded-lg cursor-pointer mt-5"
+                className="bg-[#407BFF] text-white font-bold uppercase text-sm px-6 py-3 my-5 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-max"
+                onClick={handleClick}
               >
-                Book Slot
+                BOOK SLOT
               </button>
+              <div className="bg-green-500">
+                <Snackbar
+                  open={open}
+                  autoHideDuration={6000}
+                  onClose={handleClose}
+                >
+                  <Alert
+                    onClose={handleClose}
+                    severity="success"
+                    sx={{ width: "100%" }}
+                  >
+                    Congratulations your slot has been booked!
+                  </Alert>
+                </Snackbar>
+              </div>
             </div>
           </div>
         </div>
