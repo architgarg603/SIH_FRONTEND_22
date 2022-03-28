@@ -14,7 +14,7 @@ import StudentDashboard from "./pages/Student_Dashboard/StudentDashboard";
 import InstituteDashboard from "./pages/Institute_Dashboard/InstituteDashboard";
 function App() {
   return (
-    <div className="App">
+    <div className="App font-Inter">
       <Navbar />
       <BrowserRouter>
         <Routes>
