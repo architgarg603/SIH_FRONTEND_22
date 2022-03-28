@@ -12,6 +12,7 @@ import SignupInstitute from "./pages/Signup_Institute/SignupInstitute";
 import SignupStudent from "./pages/Signup_Student/SignupStudent";
 import StudentDashboard from "./pages/Student_Dashboard/StudentDashboard";
 import InstituteDashboard from "./pages/Institute_Dashboard/InstituteDashboard";
+import Maps from "./pages/map";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Homepage />} />
+          <Route path='/map' element={<Maps />} />
           <Route path='/labs' element={<LabList />} />
           <Route path='/signup/student' element={<SignupStudent />} />
           <Route path='/signup/institute' element={<SignupInstitute />} />
