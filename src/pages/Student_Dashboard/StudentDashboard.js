@@ -65,14 +65,12 @@ function StudentDashboard() {
         </div>
         <Avatar sx={{ width: 90, height: 90 }}>H</Avatar>
       </div>
+      <div className={style.head} style={{marginBottom:"25px", marginTop:"50px"}}>Booking List</div>
       <div className={style.table}>
         <StudentTable
           StudentDetails={StudentDetails}
           setStudentDetails={setStudentDetails}
         />
-      </div>
-      <div className={style.btns}>
-        <div className={style.btn}>PAY</div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { Labs } from "../../Dummy";
 import Stack from "@mui/material/Stack";
 import TextField from "@mui/material/TextField";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
@@ -12,7 +11,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { labIds } from "../../Services/LabServices";
+import { labIds, labsExperiments } from "../../Services/LabServices";
 
 export default function Slots() {
   const [data, setData] = useState([]);
@@ -20,6 +19,8 @@ export default function Slots() {
   // const navigate = useNavigate();
   const [value, setValue] = React.useState();
   const [slot, setSlot] = React.useState("");
+  const [experiments, setExperiments] = useState();
+  // const [equipments, setEquipments] = useState();
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -31,6 +32,10 @@ export default function Slots() {
     const response = await labIds({ id });
     console.log(response);
     setData(response);
+
+    const exp = await labsExperiments({ id });
+    console.log(exp);
+    setExperiments(exp);
   }, []);
 
   return (
@@ -51,49 +56,56 @@ export default function Slots() {
           >
             {data.lab_admin_name}
           </a>
-
-          <div className="w-max bg-white p-10">
-            <div className="font-bold  text-3xl py-2 pb-10">Book Lab</div>
-            <div className="w-max">
-              <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <Stack spacing={3}>
-                  <MobileDatePicker
-                    label="Choose a date"
-                    inputFormat="MM/dd/yyyy"
-                    value={value}
-                    minDate={new Date()}
-                    onChange={handleChange}
-                    renderInput={(params) => <TextField {...params} />}
-                  />
-                </Stack>
-              </LocalizationProvider>
+          <div className="flex justify-between">
+            <div className="mt-5">
+              <p className="text-3xl font-bold">Experiments</p>
+              <p>Aim: {experiments?.aim}</p>
+              <p>Description: {experiments?.description}</p>
+              <p>Equipments: {data?.equipments || experiments?.aim}</p>
             </div>
-            <div className="pt-5">
-              <Box sx={{ minWidth: 120 }}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">
-                    Choose a Slot
-                  </InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={slot}
-                    label="Age"
-                    onChange={handleSlot}
-                  >
-                    <MenuItem value={10}>10:00 am- 1:00 pm</MenuItem>
-                    <MenuItem value={20}>11:00 am- 2:00 pm</MenuItem>
-                    <MenuItem value={30}>12:00 am- 3:00 pm</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
+            <div className="w-max bg-white p-10">
+              <div className="font-bold  text-3xl py-2 pb-10">Book Lab</div>
+              <div className="w-max">
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <Stack spacing={3}>
+                    <MobileDatePicker
+                      label="Choose a date"
+                      inputFormat="MM/dd/yyyy"
+                      value={value}
+                      minDate={new Date()}
+                      onChange={handleChange}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </Stack>
+                </LocalizationProvider>
+              </div>
+              <div className="pt-5">
+                <Box sx={{ minWidth: 120 }}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">
+                      Choose a Slot
+                    </InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      value={slot}
+                      label="Age"
+                      onChange={handleSlot}
+                    >
+                      <MenuItem value={10}>10:00 am- 1:00 pm</MenuItem>
+                      <MenuItem value={20}>11:00 am- 2:00 pm</MenuItem>
+                      <MenuItem value={30}>12:00 am- 3:00 pm</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Box>
+              </div>
+              <button
+                type="submit"
+                className="py-1 w-max text-center text-sm md:text-lg px-3 md:py-2 md:px-5 text-white bg-blue-600 rounded-lg cursor-pointer mt-5"
+              >
+                Book Slot
+              </button>
             </div>
-            <button
-              type="submit"
-              className="py-1 w-max text-center text-sm md:text-lg px-3 md:py-2 md:px-5 text-white bg-blue-600 rounded-lg cursor-pointer mt-5"
-            >
-              Book Slot
-            </button>
           </div>
         </div>
       </div>
