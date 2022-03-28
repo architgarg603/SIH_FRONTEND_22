@@ -27,7 +27,6 @@ function InstituteDashboard() {
     let studentDetails = await getPerticularInstituteStudent({ id });
     data.students = studentDetails;
     data.labs = labDetails;
-    // console.log(labDetails)
     // data.labs = []
     setInstituteDetails(data)
   }
@@ -75,7 +74,7 @@ function InstituteDashboard() {
       <div className={style.btns}>
         <div className={style.btn} onClick={handleOpen} >Register A Lab</div>
       </div>
-      <div className={style.head} style={{ marginBottom: "30px" }}>Institute List</div>
+      <div className={style.head} style={{ marginBottom: "30px" }}>Lab List</div>
       {instituteDetails?.labs && <InstituteTable InstituteDetails={instituteDetails?.labs} />}
       {(instituteDetails?.labs?.length == 0) ? <EmptyListMsg msg={'No lab Registered'} /> : null}
       <RegisterLabModal handleClose={handleClose} open={open} setInstituteDetails={setInstituteDetails} instituteDetails={instituteDetails} />

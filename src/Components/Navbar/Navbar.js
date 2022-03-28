@@ -42,7 +42,7 @@ const Navbar = () => {
         backdropFilter: "blur(10px)",
         backgroundColor: "transparent",
         color: "black",
-        boxShadow: "none",
+        boxShadow: "none !important",
         position: "fixed",
         "& *": {
           color: "black !important",
