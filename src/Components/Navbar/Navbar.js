@@ -40,7 +40,7 @@ const Navbar = () => {
       position="static"
       sx={{
         backdropFilter: "blur(10px)",
-        backgroundColor: "transparent",
+        backgroundColor: "transparent !important",
         color: "black",
         boxShadow: "none !important",
         position: "fixed",
