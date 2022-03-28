@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
 import { getInstituteDetails, getPerticularInstituteLabs, getPerticularInstituteStudent } from '../../Services/InstituteService';
 import RegisterLabModal from '../../Components/RegisterLabModal/RegisterLabModal';
+import EmptyListMsg from '../../Components/EmtyListMsg/EmptyListMsg';
 
 function InstituteDashboard() {
   const [instituteDetails, setInstituteDetails] = useState({})
@@ -26,6 +27,8 @@ function InstituteDashboard() {
     let studentDetails = await getPerticularInstituteStudent({ id });
     data.students = studentDetails;
     data.labs = labDetails;
+    // console.log(labDetails)
+    // data.labs = []
     setInstituteDetails(data)
   }
 
@@ -56,10 +59,7 @@ function InstituteDashboard() {
                 </Avatar>
               </ListItemAvatar>
               <ListItemText primary="Address" secondary={instituteDetails?.institute_address} />
-
             </ListItem>
-
-
             <ListItem>
               <ListItemAvatar>
                 <Avatar sx={{ backgroundColor: "#2db6bc" }}>
@@ -75,7 +75,9 @@ function InstituteDashboard() {
       <div className={style.btns}>
         <div className={style.btn} onClick={handleOpen} >Register A Lab</div>
       </div>
+      <div className={style.head} style={{ marginBottom: "30px" }}>Institute List</div>
       {instituteDetails?.labs && <InstituteTable InstituteDetails={instituteDetails?.labs} />}
+      {(instituteDetails?.labs?.length == 0) ? <EmptyListMsg msg={'No lab Registered'} /> : null}
       <RegisterLabModal handleClose={handleClose} open={open} setInstituteDetails={setInstituteDetails} instituteDetails={instituteDetails} />
     </div>
   )
