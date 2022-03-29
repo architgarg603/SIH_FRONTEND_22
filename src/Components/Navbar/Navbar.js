@@ -126,8 +126,9 @@ const Navbar = () => {
             ))}
           </Box>
           <ButtonGroup className={style.btns}>
-            {!stuId && !instId ? <>  <Button variant="outlined" className={style.btn} onClick={()=>navigate('/login/student')}>Login as Student</Button>
-              <Button variant="contained" className={style.btn1} onClick={()=>navigate('/login/institute')}>Login as Institute</Button></> :
+            {!stuId && !instId ? <>  
+            <Button variant="outlined" className={style.btn} onClick={()=>navigate('/login/student')}>Student</Button>
+              <Button variant="contained" className={style.btn1} onClick={()=>navigate('/login/institute')}>Institute</Button></> :
               <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" onClick={()=>{
                 if(stuId){
                   navigate('/student/dashboard')

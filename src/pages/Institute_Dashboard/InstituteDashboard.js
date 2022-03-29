@@ -69,7 +69,7 @@ function InstituteDashboard() {
             </ListItem>
           </List>
         </div>
-        <Avatar sx={{ width: 90, height: 90 }}>H</Avatar>
+        {/* <Avatar sx={{ width: 90, height: 90 }}>H</Avatar> */}
       </div>
       <div className={style.btns}>
         <div className={style.btn} onClick={handleOpen} >Register A Lab</div>

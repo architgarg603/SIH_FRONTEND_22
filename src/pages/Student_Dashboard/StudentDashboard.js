@@ -9,23 +9,19 @@ import Avatar from "@mui/material/Avatar";
 import ImageIcon from "@mui/icons-material/Image";
 import HomeIcon from "@mui/icons-material/Home";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { getAllSlots } from "../../Services/slotServices";
 function StudentDashboard() {
   const [StudentDetails, setStudentDetails] = useState([]);
-
+  let stuId = localStorage.getItem('stu_id')
+  const getSlots = async () => {
+    const data = await getAllSlots();
+    let slots = data.filter(data => {
+      return data.student_id == stuId
+    });
+    setStudentDetails(slots)
+  }
   useEffect(() => {
-    setStudentDetails([
-      ["temp", "temp", "contact", "slot"],
-      ["temp1", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp2", "temp", "contact", "slot"],
-      ["temp3", "temp", "contact", "slot"],
-    ]);
+    getSlots();
   }, []);
 
   return (
@@ -63,9 +59,9 @@ function StudentDashboard() {
             </ListItem>
           </List>
         </div>
-        <Avatar sx={{ width: 90, height: 90 }}>H</Avatar>
+        {/* <Avatar sx={{ width: 90, height: 90 }}>H</Avatar> */}
       </div>
-      <div className={style.head} style={{marginBottom:"25px", marginTop:"50px"}}>Booking List</div>
+      <div className={style.head} style={{ marginBottom: "25px", marginTop: "50px" }}>Booking List</div>
       <div className={style.table}>
         <StudentTable
           StudentDetails={StudentDetails}
