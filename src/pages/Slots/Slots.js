@@ -35,7 +35,7 @@ export default function Slots() {
   // const [experiments, setExperiments] = useState();
   // const [equipments, setEquipments] = useState();
   const getLabDetails = async () => {
-    let labDetails = await experiments({ id: labId });
+    let labDetails = await labIds({ id: labId });
     console.log(labDetail, labDetails);
     setLabDetail(labDetails);
   };
