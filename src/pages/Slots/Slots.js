@@ -11,7 +11,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { experiments, labIds } from "../../Services/LabServices";
+import { labIds } from "../../Services/LabServices";
 import EmptyListMsg from "../../Components/EmtyListMsg/EmptyListMsg";
 import LabTable from "../../Components/LabTable/LabTable";
 import Snackbar from "@mui/material/Snackbar";
