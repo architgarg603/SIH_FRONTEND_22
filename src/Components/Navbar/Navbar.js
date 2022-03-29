@@ -15,7 +15,7 @@ import logo from "../../assets/images/black-logo.png";
 import { useNavigate } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 
-let pages = ["Home", "Labs", "Register Lab"];
+let pages = ["Home", "Labs", "Institute"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -26,7 +26,7 @@ const Navbar = () => {
   const onClickHandler = (name) => {
     if (name == 'Home') navigate("/")
     if (name == 'Labs') navigate("/labs")
-    if (name == 'Register Lab') navigate(`/institute/dashboard`)
+    if (name == 'Institute') navigate(`/institute/dashboard`)
     // if(name == 'Home')navigate("/")
   }
 
