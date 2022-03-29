@@ -60,11 +60,7 @@ export default function ListContainer({ list }) {
                     </h5>
                   </div>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sunt tenetur dicta odit nostrum, perspiciatis cupiditate
-                    laudantium atque obcaecati, totam voluptatibus maxime
-                    voluptates. Sint nam eius minima, illum tempore laboriosam
-                    obcaecati?
+                    {list.lab_description}
                   </p>
                   <div className="flex justify-end space-x-1">
                     <Link to={`/slots/${list.lab_id}`}>

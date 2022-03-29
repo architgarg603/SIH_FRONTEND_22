@@ -42,18 +42,16 @@ export default function Slots() {
   useEffect(() => {
     getLabDetails();
     setLabDetails([
-      ["temp", "temp"],
-      ["temp1", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp3", "temp"],
+      ["Testing Ph of water", "Testing Ph of water in localilty"],
+      [
+        "Neutralization of acid-base",
+        "To preform titration and and acid-base neutralization",
+      ],
     ]);
+
+    // setLabDetails(labDts);
+
+    return () => {};
   }, []);
   const handleClick = () => {
     setOpen(true);
