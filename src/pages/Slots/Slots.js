@@ -11,7 +11,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { labIds } from "../../Services/LabServices";
+import { experiments, labIds } from "../../Services/LabServices";
 import EmptyListMsg from "../../Components/EmtyListMsg/EmptyListMsg";
 import LabTable from "../../Components/LabTable/LabTable";
 import Snackbar from "@mui/material/Snackbar";
@@ -35,25 +35,23 @@ export default function Slots() {
   // const [experiments, setExperiments] = useState();
   // const [equipments, setEquipments] = useState();
   const getLabDetails = async () => {
-    let labDetails = await labIds({ id: labId });
+    let labDetails = await experiments({ id: labId });
     console.log(labDetail, labDetails);
     setLabDetail(labDetails);
   };
   useEffect(() => {
     getLabDetails();
     setLabDetails([
-      ["temp", "temp"],
-      ["temp1", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp3", "temp"],
+      ["Testing Ph of water", "Testing Ph of water in localilty"],
+      [
+        "Neutralization of acid-base",
+        "To preform titration and and acid-base neutralization",
+      ],
     ]);
+
+    // setLabDetails(labDts);
+
+    return () => {};
   }, []);
   const handleClick = () => {
     setOpen(true);
