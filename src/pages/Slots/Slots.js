@@ -102,10 +102,7 @@ export default function Slots() {
             <div className="mt-5 pl-10">
               <p className="text-4xl font-bold mb-3">About</p>
               <p className="w-2/3">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum
-                repellat accusantium commodi magnam nam adipisci, nihil eaque
-                exercitationem! Earum iure error ullam cum velit ex blanditiis
-                iste labore atque? Ut.
+                {data.lab_description}
               </p>
               <div className="pt-10">
                 <p className="text-2xl font-bold mb-3">Select Experiments</p>
@@ -175,7 +172,7 @@ export default function Slots() {
                   variant="outlined" 
                 >
                   <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-                    This is a success message!
+                    Congratulations your slot has been booked!
                   </Alert>
                 </Snackbar>
               </div>

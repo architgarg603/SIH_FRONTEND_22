@@ -49,7 +49,6 @@ export default function ListContainer({ list }) {
                       <GradeIcon />
                       <GradeIcon />
                       <GradeIcon />
-                      <GradeIcon />
                     </div>
                   </div>
                   <div className="flex space-x-1">
@@ -114,11 +113,7 @@ export default function ListContainer({ list }) {
 
                       <div className="relative p-6 flex-auto">
                         <p className="my-1 text-blueGray-500 text-lg leading-relaxed mb-4">
-                          Lorem, ipsum dolor sit amet consectetur adipisicing
-                          elit. Nemo consequuntur impedit quis enim eaque
-                          doloribus quos ipsam? Fugit voluptatibus iure, fugiat
-                          quae fuga expedita praesentium magni sunt.
-                          Consequuntur, nostrum laboriosam!
+                          {list.lab_description}
                         </p>
                         <Accordion>
                           <AccordionSummary

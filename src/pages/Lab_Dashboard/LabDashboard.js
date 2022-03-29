@@ -19,6 +19,7 @@ function LabDashboard() {
   const labId = location.id;
   const [labDetails, setLabDetails] = useState([]);
   const [labDetail, setLabDetail] = useState([]);
+  const [equipments, setEquipments] = useState([]);
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -31,17 +32,15 @@ function LabDashboard() {
   useEffect(() => {
     getLabDetails();
     setLabDetails([
-      ["temp", "temp"],
-      ["temp1", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp2", "temp"],
-      ["temp3", "temp"],
+      ["Testing Ph of water", "Testing Ph of water in locality"],
+      [
+        "Neutralization of acid-base",
+        "To preform titration and and acid-base neutralization",
+      ],
+    ]);
+    setEquipments([
+      ["Beaker", "Used in titration"],
+      ["Test-tube", "Used in titration"],
     ]);
   }, []);
 
@@ -120,7 +119,7 @@ function LabDashboard() {
       {labDetails.length == 0 ? (
         <EmptyListMsg msg={"No lab registered"} />
       ) : (
-        <LabTable labDetails={labDetails} setLabDetails={setLabDetails} />
+        <LabTable labDetails={equipments} setLabDetails={setEquipments} />
       )}
       <AddEquipmentModal
         handleClose={handleClose}
