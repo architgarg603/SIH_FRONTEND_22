@@ -34,7 +34,7 @@ function AddEquipmentModal({ open, handleClose, setLabDetails, labDetails }) {
                     <input type='text' onChange={(e) => setDetails(e.target.value)} placeholder='Enter Details' style={{ borderBottom: '2px solid grey', padding: '10px', fontSize: 'large', outline:'none', width:'30vw', marginBottom:'40px'}} />
                 </Typography>
                 </div>
-                <Typography id="modal-modal-description" sx={{ mt: 2, width:'150px', height:'40px', display:'flex', justifyContent:'center', alignItems:'center', cursor:'pointer', background:'#2db6bc', borderRadius:'15px' }} onClick={onSubmitHandler}>
+                <Typography  id="modal-modal-description" sx={{ mt: 2, width:'150px', height:'40px', display:'flex', justifyContent:'center', alignItems:'center', cursor:'pointer', background:'#2db6bc', borderRadius:'15px' }} onClick={onSubmitHandler}>
                     Submit
                 </Typography>
             </Box>

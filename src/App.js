@@ -12,12 +12,12 @@ import SignupInstitute from "./pages/Signup_Institute/SignupInstitute";
 import SignupStudent from "./pages/Signup_Student/SignupStudent";
 import StudentDashboard from "./pages/Student_Dashboard/StudentDashboard";
 import InstituteDashboard from "./pages/Institute_Dashboard/InstituteDashboard";
-import Maps from "./pages/map";
+import Maps from "./Components/Map/map";
 function App() {
   return (
     <div className="App font-Inter">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path='/' element={<Homepage />} />
           <Route path='/map' element={<Maps />} />
@@ -26,6 +26,7 @@ function App() {
           <Route path='/signup/institute' element={<SignupInstitute />} />
           <Route path='/login/student' element={<LoginStudent />} />
           <Route path='/login/institute' element={<LoginInstitute />} />
+
           <Route path='/slots/:id' element={<Slots />} />
           <Route path='/lab/:id' element={<LabDashboard />} />
           <Route path='/student/dashboard' element={<StudentDashboard />} />

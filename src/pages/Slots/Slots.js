@@ -172,15 +172,12 @@ export default function Slots() {
               <div className="bg-green-500">
                 <Snackbar
                   open={open}
-                  autoHideDuration={6000}
+                  autoHideDuration={60000000}
                   onClose={handleClose}
+                  variant="outlined" 
                 >
-                  <Alert
-                    onClose={handleClose}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                  >
-                    Congratulations your slot has been booked!
+                  <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    This is a success message!
                   </Alert>
                 </Snackbar>
               </div>

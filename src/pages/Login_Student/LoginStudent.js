@@ -14,6 +14,7 @@ function LoginStudent() {
             let token = data.token_type + " " + data.access_token;
             localStorage.setItem("token", token)
             localStorage.setItem("type", "student")
+            localStorage.setItem("stu_id", data.student_id)
             navigate("/")
         } catch (err) {
             console.log(err)

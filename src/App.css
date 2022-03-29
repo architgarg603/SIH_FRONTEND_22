@@ -28,3 +28,8 @@
   width: 0em;
   height: 0em;
 }
+
+.MuiAlert-filledSuccess{
+  background-color: #4bb543 !important;
+  color: white !important;
+}

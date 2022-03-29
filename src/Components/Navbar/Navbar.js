@@ -12,11 +12,23 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import style from "./Navbar.module.scss"
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../assets/images/black-logo.png";
+import { useNavigate } from "react-router-dom";
+import { Avatar } from "@material-ui/core";
 
-const pages = ["Home", "Institute", "Labs" , "Register Lab"];
+let pages = ["Home", "Labs", "Register Lab"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const navigate = useNavigate();
+  const stuId = localStorage.getItem('stu_id')
+  const instId = localStorage.getItem('inst_id')
+  if(!stuId && !instId)pages = []
+  const onClickHandler = (name) => {
+    if (name == 'Home') navigate("/")
+    if (name == 'Labs') navigate("/labs")
+    if (name == 'Register Lab') navigate(`/institute/dashboard`)
+    // if(name == 'Home')navigate("/")
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,6 +51,7 @@ const Navbar = () => {
         color: "black",
         boxShadow: "none !important",
         position: "fixed",
+        zIndex:'100',
         "& *": {
           color: "black !important",
         },
@@ -46,15 +59,15 @@ const Navbar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        <a href = "/">
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
-          >
-            <img className="w-36 h-20" src={logo} alt="" />
-          </Typography>
+          <a href="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            >
+              <img className="w-36 h-20" src={logo} alt="" />
+            </Typography>
           </a>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -87,7 +100,7 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => { onClickHandler(page); handleCloseNavMenu(); }}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -105,7 +118,7 @@ const Navbar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => { onClickHandler(page); handleCloseNavMenu(); }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -113,10 +126,11 @@ const Navbar = () => {
             ))}
           </Box>
           <ButtonGroup className={style.btns}>
-      <Button variant="outlined" className={style.btn}>Login</Button>
-      <Button variant="contained" className={style.btn1}>Register</Button>
-    </ButtonGroup>
-        
+            {stuId || instId ? <>  <Button variant="outlined" className={style.btn} onClick={()=>navigate('/login/student')}>Login as Student</Button>
+              <Button variant="contained" className={style.btn1} onClick={()=>navigate('/login/institute')}>Login as Institute</Button></> :
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />}
+          </ButtonGroup>
+
         </Toolbar>
       </Container>
     </AppBar>

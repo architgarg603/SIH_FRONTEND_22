@@ -99,7 +99,7 @@ function LabDashboard() {
             </ListItemAvatar>
             <ListItemText
               primary="Address"
-              secondary={labDetail?.institute_address}
+              secondary={labDetail?.lab_address}
             />
           </ListItem>
           <ListItem></ListItem>
@@ -107,7 +107,7 @@ function LabDashboard() {
       </div>
 
       <div className={style.head} style={{ marginBottom: "15px" }}>
-        Experminet List
+        Experiment List
       </div>
       {labDetails.length == 0 ? (
         <EmptyListMsg msg={"No lab registered"} />
