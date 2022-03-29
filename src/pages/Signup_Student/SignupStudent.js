@@ -30,6 +30,12 @@ function SignupStudent() {
                 <div className={style.subHead}>Password</div>
                 <input type="password" placeholder='Enter Password' onChange={(e)=>setDetails({...details,password:e.target.value})}/>
 
+                <div className={style.subHead}>Course</div>
+                <input type="text" placeholder='Enter Course'  onChange={(e)=>setDetails({...details,course:e.target.value})}/>
+
+                <div className={style.subHead}>Year of Graduation</div>
+                <input type="text" placeholder='Enter Graduating Year'  onChange={(e)=>setDetails({...details,year:e.target.value})}/>
+
                 <div className={style.subHead}>Institute Id</div>
                 <input type="text" placeholder='Enter Institute Id'  onChange={(e)=>setDetails({...details,id:e.target.value})}/>
 

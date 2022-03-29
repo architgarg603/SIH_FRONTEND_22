@@ -20,6 +20,9 @@ function SignupInstitute() {
             <div>
                 <div className={style.head}>Register your account</div>
 
+                <div className={style.subHead} >Name</div>
+                <input type="text" placeholder='Enter Name' onChange={(e) => { setDetails({ ...details, name: e.target.value }) }} />
+
                 <div className={style.subHead} >Email</div>
                 <input type="text" placeholder='Enter Email' onChange={(e) => { setDetails({ ...details, email: e.target.value }) }} />
 

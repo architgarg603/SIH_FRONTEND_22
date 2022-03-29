@@ -1,7 +1,9 @@
 import axios from "../axiosInstance"
 
-export const studentSignup = async ({ id, email, name, password }) => {
-    let data = await axios.post('/student', { institute_id: id, student_email: email, student_name: name, student_password: password });
+export const studentSignup = async ({ id, email, name, password, year,course }) => {
+    console.log(id)
+    id = Number(id)
+    let data = await axios.post('/student', { institute_id: id, email: email, name: name, password: password ,year,is_student:true,course});
     return data.data;
 }
 export const studentLogin = async ({ email, password }) => {
@@ -19,8 +21,9 @@ export const instituteLogin = async ({ email, password }) => {
     let data = await axios.post(`/login_institute`, formData);
     return data.data;
 }
-export const instituteSignup = async ({ email, password,address,isParent = false,isResource = false }) => {
+export const instituteSignup = async ({ name,email, password,address,isParent = false,isResource = false }) => {
     let data = await axios.post(`/institute`,{
+        institute_name:name,
         institute_email:email,
         institute_password:password,
         institute_address:address,
