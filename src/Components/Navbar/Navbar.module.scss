@@ -1,7 +1,7 @@
 .btns{
     width: 20vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     .btn1{
        
         width: 8vw;
@@ -10,6 +10,10 @@
         color: white !important;
         
         cursor: pointer;
+    }
+
+    button{
+        margin-right: 15px;
     }
     .btn{
         width: 8vw;
