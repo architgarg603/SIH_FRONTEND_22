@@ -8,20 +8,28 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import ImageIcon from "@mui/icons-material/Image";
 import HomeIcon from "@mui/icons-material/Home";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import EmailIcon from '@mui/icons-material/Email';
 import { getAllSlots } from "../../Services/slotServices";
+import { getStudentInfo } from "../../Services/studentServices";
 function StudentDashboard() {
-  const [StudentDetails, setStudentDetails] = useState([]);
+  const [StudentDetails, setStudentDetails] = useState({});
+  const [slotDetails, setSlotDetails] = useState([]);
   let stuId = localStorage.getItem('stu_id')
   const getSlots = async () => {
     const data = await getAllSlots();
     let slots = data.filter(data => {
       return data.student_id == stuId
     });
-    setStudentDetails(slots)
+    setSlotDetails(slots)
+  }
+  const getStudent = async ()=>{
+    let data = await getStudentInfo({id:stuId});
+    console.log(data)
+    setStudentDetails(data)
   }
   useEffect(() => {
     getSlots();
+    getStudent()
   }, []);
 
   return (
@@ -42,20 +50,20 @@ function StudentDashboard() {
                   <ImageIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Name" secondary="John Doe" />
+              <ListItemText primary="Name" secondary={StudentDetails.name} />
 
               <ListItemAvatar>
                 <Avatar sx={{ backgroundColor: "#2db6bc" }}>
-                  <LocalPhoneIcon />
+                  <EmailIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Phone" secondary="0000000000" />
+              <ListItemText primary="Email" secondary={StudentDetails.email} />
               <ListItemAvatar>
                 <Avatar sx={{ backgroundColor: "#2db6bc" }}>
                   <HomeIcon />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Address" secondary="xyx" />
+              <ListItemText primary="Course" secondary={StudentDetails.course} />
             </ListItem>
           </List>
         </div>
@@ -64,8 +72,8 @@ function StudentDashboard() {
       <div className={style.head} style={{ marginBottom: "25px", marginTop: "50px" }}>Booking List</div>
       <div className={style.table}>
         <StudentTable
-          StudentDetails={StudentDetails}
-          setStudentDetails={setStudentDetails}
+          StudentDetails={slotDetails}
+          setStudentDetails={setSlotDetails}
         />
       </div>
     </div>
